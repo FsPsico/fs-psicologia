@@ -79,7 +79,8 @@
 
 /* byline (E-E-A-T) */
 .byline { display: flex; align-items: center; gap: 14px; padding: 18px 0; border-top: 1px solid rgba(14,68,86,.14); border-bottom: 1px solid rgba(14,68,86,.14); }
-.byline-mark { width: 44px; height: 44px; border-radius: 999px; object-fit: contain; background: var(--img-bg); border: 1px solid rgba(14,68,86,.12); flex-shrink: 0; }
+.byline > picture { flex-shrink: 0; line-height: 0; }
+.byline-mark { width: 44px; height: 44px; border-radius: 999px; object-fit: cover; object-position: 50% 8%; border: 1px solid rgba(14,68,86,.12); flex-shrink: 0; }
 .byline-text { font-size: .9rem; line-height: 1.5; color: var(--muted); }
 .byline-text strong { color: var(--deep); font-weight: 600; }
 .byline-text .crp { color: var(--petrol); }
@@ -144,5 +145,6 @@
 .post-back { display: inline-block; margin-top: clamp(40px, 6vh, 56px); font-size: .92rem; color: var(--petrol); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(194,160,99,.6); }
 
 @media (max-width: 560px) {
-  .author-box { flex-direction: column; gap: 14px; }
+ .author-box > picture { flex-shrink: 0; line-height: 0; }
+.author-box img { width: 64px; height: 64px; border-radius: 999px; object-fit: cover; object-position: 50% 8%; border: 1px solid rgba(14,68,86,.12); flex-shrink: 0; }
 }
