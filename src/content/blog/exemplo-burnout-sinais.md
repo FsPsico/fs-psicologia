@@ -9,7 +9,7 @@ tags:
   - trabalho
   - esgotamento
 cover: /assets/uploads/pexels-inkverse-store-2158691322-35542602.jpg
-coverAlt: Poltrona do consultório com luz natural, região da Berrini, São Paulo
+coverAlt: Homem em escritório à noite demonstrando sinais de estresse e esgotamento emocional no ambiente de trabalho.
 draft: false
 ---
 
