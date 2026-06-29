@@ -116,7 +116,8 @@
   background: var(--card); border: 1px solid rgba(14,68,86,.14); border-radius: 12px;
   display: flex; gap: 20px; align-items: flex-start;
 }
-.author-box img { width: 64px; height: 64px; border-radius: 999px; object-fit: contain; background: var(--img-bg); border: 1px solid rgba(14,68,86,.12); flex-shrink: 0; }
+.author-box > picture { flex-shrink: 0; line-height: 0; }
+.author-box img { width: 64px; height: 64px; border-radius: 999px; object-fit: cover; object-position: 50% 8%; border: 1px solid rgba(14,68,86,.12); flex-shrink: 0; }
 .author-box .ab-eyebrow { font-family: var(--sans); font-size: .74rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--petrol); margin: 0 0 8px; }
 .author-box h2 { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; color: var(--deep); margin: 0 0 4px; }
 .author-box .ab-crp { font-size: .85rem; color: var(--petrol); margin: 0 0 12px; }
@@ -145,6 +146,5 @@
 .post-back { display: inline-block; margin-top: clamp(40px, 6vh, 56px); font-size: .92rem; color: var(--petrol); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(194,160,99,.6); }
 
 @media (max-width: 560px) {
- .author-box > picture { flex-shrink: 0; line-height: 0; }
-.author-box img { width: 64px; height: 64px; border-radius: 999px; object-fit: cover; object-position: 50% 8%; border: 1px solid rgba(14,68,86,.12); flex-shrink: 0; }
+  .author-box { flex-direction: column; gap: 14px; }
 }
