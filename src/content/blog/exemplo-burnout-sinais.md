@@ -88,15 +88,3 @@ Se você se reconheceu em mais de um dos sinais descritos aqui, isso já é raz�
 Esperar piorar não é resiliência. É o preço de uma ideia equivocada sobre o que significa cuidar de si.
 
 ***
-
-**Sobre o autor**
-
-Felipe Zecchin Salim é psicólogo clínico (CRP 06/216021) e fundador da FS Psicologia Clínica e Saúde Mental, em São Paulo. Sua trajetória reúne duas formações — Psicologia, pela Universidade Paulista, e Comunicação Social, pela Anhembi Morumbi — e mais de quinze anos de atuação em marketing e publicidade. É dessa vivência em ambientes de alta exigência que vem sua sensibilidade para quem vive sob pressão contínua: executivos, lideranças e profissionais que aprenderam a operar no limite e raramente encontram espaço para si. Atualmente, cursa pós-graduação em Gestão Clínica no Hospital Sírio-Libanês.
-
-_Publicado em julho de 2026. Última atualização: julho de 2026._
-
-***
-
-_Se algo neste texto ressoou com o seu momento, podemos conversar. O primeiro contato é por WhatsApp, sem compromisso — presencial em São Paulo ou online._
-
-[→ Fale comigo pelo WhatsApp]
