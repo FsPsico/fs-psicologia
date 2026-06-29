@@ -52,7 +52,10 @@ export type CategorySlug = keyof typeof CATEGORIES;
 // JSON-LD for the clinic — identical in meaning to the original landing.
 export const BUSINESS_JSONLD = {
   '@context': 'https://schema.org',
-  '@type': ['Psychologist', 'MedicalBusiness'],
+  // Psychologist is already a subtype of MedicalBusiness/LocalBusiness, so a
+  // single type covers everything (address, geo, telephone…) without the
+  // "duplicate property" warnings that a multi-type array triggers.
+  '@type': 'Psychologist',
   name: SITE.name,
   alternateName: SITE.shortName,
   description:
@@ -70,6 +73,7 @@ export const BUSINESS_JSONLD = {
     streetAddress: 'Rua André Ampère, 153',
     addressLocality: 'São Paulo',
     addressRegion: 'SP',
+    postalCode: '04562-080',
     addressCountry: 'BR',
   },
   geo: {
