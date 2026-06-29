@@ -8,7 +8,7 @@ tags:
   - burnout
   - trabalho
   - esgotamento
-cover: /assets/uploads/pexels-inkverse-store-2158691322-35542602.jpg
+cover: /assets/uploads/burnout-estresse-cansaco-trabalho-saude-mental-psicologo.jpg
 coverAlt: Homem em escritório à noite demonstrando sinais de estresse e esgotamento emocional no ambiente de trabalho.
 draft: false
 ---
