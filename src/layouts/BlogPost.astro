@@ -15,6 +15,11 @@ const cat = CATEGORIES[category];
 const path = `/blog/${post.id}`;
 const minutes = readingTime(post.body ?? '');
 
+// Absolute URL for sharing + a WhatsApp share link (works everywhere).
+const shareUrl = new URL(path, SITE.url).href;
+const shareWhatsApp =
+  'https://wa.me/?text=' + encodeURIComponent(`${title} — ${shareUrl}`);
+
 // OG image for the post: its cover when available, else the site default.
 const ogImage = cover ?? SITE.defaultOgImage;
 
@@ -70,7 +75,7 @@ const jsonLd = {
           <p class="post-desc">{description}</p>
 
           <div class="byline">
-          <picture>
+            <picture>
               <source type="image/webp" srcset="/assets/img/felipe-retrato-420.webp">
               <img src="/assets/img/felipe-retrato-420.jpg" alt="Felipe Zecchin Salim" width="44" height="44" class="byline-mark">
             </picture>
@@ -95,6 +100,15 @@ const jsonLd = {
           )}
         </div>
 
+        <div class="share" data-share>
+          <span class="share-label">Compartilhar</span>
+          <div class="share-btns">
+            <button type="button" class="share-btn" data-share-native hidden>Compartilhar…</button>
+            <a class="share-btn" href={shareWhatsApp} target="_blank" rel="noopener">WhatsApp</a>
+            <button type="button" class="share-btn" data-share-copy>Copiar link</button>
+          </div>
+        </div>
+
         <AuthorBox />
 
         {related.length > 0 && (
@@ -115,4 +129,39 @@ const jsonLd = {
       </div>
     </article>
   </main>
+
+  <script is:inline define:vars={{ shareUrl, shareTitle: title }}>
+    (function () {
+      var box = document.querySelector('[data-share]');
+      if (!box) return;
+
+      // Native share sheet (mobile): WhatsApp, Instagram, AirDrop, e-mail…
+      var nativeBtn = box.querySelector('[data-share-native]');
+      if (nativeBtn && navigator.share) {
+        nativeBtn.hidden = false;
+        nativeBtn.addEventListener('click', function () {
+          navigator.share({ title: shareTitle, url: shareUrl }).catch(function () {});
+        });
+      }
+
+      // Copy link (with a brief confirmation).
+      var copyBtn = box.querySelector('[data-share-copy]');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', function () {
+          var done = function () {
+            var prev = copyBtn.textContent;
+            copyBtn.textContent = 'Link copiado!';
+            setTimeout(function () { copyBtn.textContent = prev; }, 1800);
+          };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(shareUrl).then(done).catch(function () {
+              window.prompt('Copie o link:', shareUrl);
+            });
+          } else {
+            window.prompt('Copie o link:', shareUrl);
+          }
+        });
+      }
+    })();
+  </script>
 </BaseLayout>
