@@ -1,0 +1,30 @@
+---
+// Shared site footer — identical to the original landing footer.
+import { WHATSAPP, SITE } from '../consts';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-id">
+          <picture>
+            <source type="image/webp" srcset="/assets/img/logo-footer.webp">
+            <img src="/assets/img/logo-footer.png" alt="" width="44" height="44" class="footer-logo">
+          </picture>
+          <span class="footer-name">FS Psicologia Clínica e Saúde Mental</span>
+        </div>
+        <p class="footer-meta">Felipe Zecchin Salim — CRP 06/216021<br>Rua André Ampère, 153 — São Paulo</p>
+      </div>
+      <nav class="footer-links" aria-label="Links de contato">
+        <a href={WHATSAPP} target="_blank" rel="noopener">WhatsApp</a>
+        <a href={SITE.instagram} target="_blank" rel="noopener">Instagram · @fs.psicologiaclinica</a>
+        <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p class="ethics">Este site segue as diretrizes do Código de Ética Profissional do Psicólogo e a regulamentação do Conselho Federal de Psicologia sobre publicidade em Psicologia.</p>
+      <p class="copyright">© <span id="year">{year}</span> FS Psicologia Clínica</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,23 @@
+---
+// "Sobre o autor" block (E-E-A-T) + ethical WhatsApp CTA, reused at the
+// end of every post. Same petrol/gold visual language as the landing.
+import { AUTHOR, WHATSAPP } from '../consts';
+---
+<aside class="author-box" aria-label="Sobre o autor">
+  <picture>
+    <source type="image/webp" srcset="/assets/img/logo.webp">
+    <img src="/assets/img/logo.png" alt="" width="64" height="64">
+  </picture>
+  <div>
+    <p class="ab-eyebrow">Sobre o autor</p>
+    <h2>{AUTHOR.name}</h2>
+    <p class="ab-crp">{AUTHOR.jobTitle} · {AUTHOR.crp}</p>
+    <p>{AUTHOR.bio}</p>
+  </div>
+</aside>
+
+<section class="post-cta" aria-label="Contato">
+  <div class="pq-rule"></div>
+  <p>Se algo aqui ressoou com o seu momento, podemos conversar com calma sobre o que você procura.</p>
+  <a href={WHATSAPP} target="_blank" rel="noopener" class="btn-primary">Conversar pelo WhatsApp</a>
+</section>

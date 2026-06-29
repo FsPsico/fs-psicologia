@@ -1,0 +1,23 @@
+---
+// Card for the blog index and category listings.
+import type { CollectionEntry } from 'astro:content';
+import { CATEGORIES } from '../consts';
+import { formatDate, isoDate } from '../utils';
+
+interface Props { post: CollectionEntry<'blog'> }
+const { post } = Astro.props;
+const { title, description, pubDate, category, cover, coverAlt } = post.data;
+const cat = CATEGORIES[category];
+const href = `/blog/${post.id}`;
+---
+<article class="post-card">
+  {cover && (
+    <a href={href} class="card-cover" aria-hidden="true" tabindex="-1">
+      <img src={cover} alt={coverAlt} width="640" height="400" loading="lazy" decoding="async" />
+    </a>
+  )}
+  <a href={`/blog/categoria/${category}`} class="card-cat">{cat.label}</a>
+  <h2><a href={href}>{title}</a></h2>
+  <p class="card-excerpt">{description}</p>
+  <p class="card-meta"><time datetime={isoDate(pubDate)}>{formatDate(pubDate)}</time></p>
+</article>

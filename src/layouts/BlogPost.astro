@@ -1,0 +1,118 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+import { AUTHOR, SITE, CATEGORIES } from '../consts';
+import { formatDate, isoDate, readingTime } from '../utils';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  related: CollectionEntry<'blog'>[];
+}
+const { post, related } = Astro.props;
+const { title, description, pubDate, updatedDate, category, cover, coverAlt } = post.data;
+const cat = CATEGORIES[category];
+const path = `/blog/${post.id}`;
+const minutes = readingTime(post.body ?? '');
+
+// OG image for the post: its cover when available, else the site default.
+const ogImage = cover ?? SITE.defaultOgImage;
+
+// JSON-LD BlogPosting — author (Person + CRP) and publisher (the clinic).
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  inLanguage: 'pt-BR',
+  url: new URL(path, SITE.url).href,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': new URL(path, SITE.url).href },
+  image: new URL(ogImage, SITE.url).href,
+  datePublished: isoDate(pubDate),
+  dateModified: isoDate(updatedDate ?? pubDate),
+  articleSection: cat.label,
+  keywords: post.data.tags.join(', '),
+  author: {
+    '@type': 'Person',
+    name: AUTHOR.name,
+    jobTitle: AUTHOR.jobTitle,
+    identifier: AUTHOR.crp,
+    url: SITE.url + '/',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: SITE.name,
+    logo: { '@type': 'ImageObject', url: SITE.url + '/assets/img/logo.png' },
+  },
+};
+---
+<BaseLayout
+  title={`${title} | Blog — FS Psicologia Clínica`}
+  description={description}
+  path={path}
+  image={ogImage}
+  imageAlt={coverAlt || title}
+  ogType="article"
+  publishedTime={pubDate.toISOString()}
+  modifiedTime={(updatedDate ?? pubDate).toISOString()}
+>
+  <Fragment slot="head">
+    <link rel="stylesheet" href="/assets/css/blog.css" />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <main class="blog-main">
+    <article class="post">
+      <div class="post-wrap">
+        <header class="post-header">
+          <a href={`/blog/categoria/${category}`} class="post-cat-link">{cat.label}</a>
+          <h1>{title}</h1>
+          <p class="post-desc">{description}</p>
+
+          <div class="byline">
+            <picture>
+              <source type="image/webp" srcset="/assets/img/logo.webp">
+              <img src="/assets/img/logo.png" alt="" width="44" height="44" class="byline-mark">
+            </picture>
+            <p class="byline-text">
+              Por <strong>{AUTHOR.name}</strong> <span class="crp">({AUTHOR.crp})</span><br>
+              <time datetime={isoDate(pubDate)}>{formatDate(pubDate)}</time>
+              <span class="byline-dot">·</span>{minutes} min de leitura
+            </p>
+          </div>
+        </header>
+
+        {cover && (
+          <figure class="post-cover">
+            <img src={cover} alt={coverAlt} width="1200" height="750" decoding="async" />
+          </figure>
+        )}
+
+        <div class="prose">
+          <slot />
+          {updatedDate && (
+            <p class="updated-note">Atualizado em {formatDate(updatedDate)}.</p>
+          )}
+        </div>
+
+        <AuthorBox />
+
+        {related.length > 0 && (
+          <section class="related" aria-label="Leituras relacionadas">
+            <h2>Leituras relacionadas</h2>
+            <div class="related-list">
+              {related.map((r) => (
+                <a class="related-item" href={`/blog/${r.id}`}>
+                  <span class="ri-cat">{CATEGORIES[r.data.category].label}</span>
+                  <h3>{r.data.title}</h3>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <a class="post-back" href="/blog">← Voltar para o blog</a>
+      </div>
+    </article>
+  </main>
+</BaseLayout>

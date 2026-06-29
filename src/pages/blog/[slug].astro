@@ -1,0 +1,29 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BlogPost from '../../layouts/BlogPost.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => import.meta.env.DEV || !data.draft);
+
+  return posts.map((post) => {
+    // Related: up to 3 other posts from the same cluster, newest first.
+    const related = posts
+      .filter((p) => p.id !== post.id && p.data.category === post.data.category)
+      .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+      .slice(0, 3);
+
+    return { params: { slug: post.id }, props: { post, related } };
+  });
+}
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  related: CollectionEntry<'blog'>[];
+}
+const { post, related } = Astro.props;
+const { Content } = await render(post);
+---
+<BlogPost post={post} related={related}>
+  <Content />
+</BlogPost>

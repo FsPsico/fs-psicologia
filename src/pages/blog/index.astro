@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { CATEGORIES } from '../../consts';
+
+// Drafts are visible while developing, hidden in the production build.
+const posts = (await getCollection('blog', ({ data }) => import.meta.env.DEV || !data.draft))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+<BaseLayout
+  title="Blog | FS Psicologia Clínica — São Paulo"
+  description="Textos sobre carreira e trabalho, ansiedade e transições, relações e autoconhecimento — por Felipe Zecchin Salim, psicólogo clínico (CRP 06/216021)."
+  path="/blog"
+>
+  <Fragment slot="head">
+    <link rel="stylesheet" href="/assets/css/blog.css" />
+  </Fragment>
+
+  <main class="blog-main">
+    <section class="blog-hero">
+      <div class="container">
+        <h1 class="blog-title">Blog</h1>
+        <p class="blog-intro">Reflexões sobre os temas que mais chegam ao consultório — escritas com a mesma escuta e o mesmo critério do atendimento.</p>
+        <nav class="cluster-nav" aria-label="Categorias do blog">
+          {Object.entries(CATEGORIES).map(([slug, c]) => (
+            <a class="cluster-chip" href={`/blog/categoria/${slug}`}>{c.label}</a>
+          ))}
+        </nav>
+      </div>
+    </section>
+
+    <section class="post-list">
+      <div class="container">
+        {posts.length === 0 ? (
+          <p class="empty-note">Em breve, os primeiros textos. Volte logo.</p>
+        ) : (
+          <div class="post-grid">
+            {posts.map((post) => <PostCard post={post} />)}
+          </div>
+        )}
+      </div>
+    </section>
+  </main>
+</BaseLayout>

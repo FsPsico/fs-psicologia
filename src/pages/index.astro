@@ -1,0 +1,207 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { WHATSAPP, BUSINESS_JSONLD } from '../consts';
+---
+<BaseLayout
+  home
+  title="FS Psicologia Clínica | Psicólogo na Berrini — São Paulo"
+  path="/"
+  ogType="website"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(BUSINESS_JSONLD)} slot="head" />
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section id="inicio" class="hero">
+      <div class="hero-grid container">
+        <div class="hero-copy" data-reveal>
+          <p class="eyebrow">Psicologia clínica para adultos · São Paulo</p>
+          <h1>Um espaço para cuidar de si com seriedade, no seu tempo.</h1>
+          <p class="hero-sub">Atendimento clínico particular, presencial na Berrini e online. Escuta, método e discrição.</p>
+          <div class="btn-row">
+            <a href={WHATSAPP} target="_blank" rel="noopener" class="btn-primary">Agendar uma conversa inicial</a>
+            <a href="#sobre" class="btn-secondary">Conhecer o trabalho</a>
+          </div>
+        </div>
+        <div class="hero-media" data-reveal>
+          <picture>
+            <source type="image/webp" srcset="/assets/img/consultorio-hero-560.webp 560w, /assets/img/consultorio-hero-1040.webp 1040w" sizes="(max-width: 860px) 90vw, 560px">
+            <img src="/assets/img/consultorio-hero-1040.jpg"
+                 srcset="/assets/img/consultorio-hero-560.jpg 560w, /assets/img/consultorio-hero-1040.jpg 1040w"
+                 sizes="(max-width: 860px) 90vw, 560px"
+                 width="1040" height="1300"
+                 alt="Poltrona do consultório, com luz natural — região da Berrini, São Paulo"
+                 fetchpriority="high" decoding="async">
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ACOLHIMENTO ================= -->
+    <section id="acolhimento" class="section section-opening" aria-label="Acolhimento">
+      <div class="narrow" data-reveal>
+        <p class="lead">Procurar terapia raramente acontece num bom momento. Costuma vir junto de cansaço, dúvida ou da sensação de repetir os mesmos lugares. O ponto de partida aqui é simples: escutar a sua história com seriedade — e, a partir dela, construir um caminho que faça sentido para você.</p>
+      </div>
+    </section>
+
+    <!-- ================= PULL QUOTE ================= -->
+    <section class="pullquote-section" aria-label="Princípio">
+      <div class="container" data-reveal>
+        <div class="pq-rule"></div>
+        <blockquote class="pullquote">Aqui, pensa-se com profundidade e acolhe-se com critério.</blockquote>
+      </div>
+    </section>
+
+    <!-- ================= SOBRE ================= -->
+    <section id="sobre" class="section">
+      <div class="about-grid container">
+        <div class="about-media-col" data-reveal>
+          <p class="eyebrow">Sobre</p>
+          <div class="about-media">
+            <picture>
+              <source type="image/webp" srcset="/assets/img/felipe-retrato-420.webp 420w, /assets/img/felipe-retrato-760.webp 760w" sizes="(max-width: 640px) 80vw, 380px">
+              <img src="/assets/img/felipe-retrato-760.jpg"
+                   srcset="/assets/img/felipe-retrato-420.jpg 420w, /assets/img/felipe-retrato-760.jpg 760w"
+                   sizes="(max-width: 640px) 80vw, 380px"
+                   width="760" height="1141"
+                   alt="Felipe Zecchin Salim, psicólogo clínico"
+                   loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </div>
+        <div class="about-text" data-reveal>
+          <h2 class="about-name">Felipe Zecchin Salim</h2>
+          <p>Sou Felipe Zecchin Salim, psicólogo clínico (CRP 06/216021). Atendo adultos — presencialmente na Berrini e online.</p>
+          <p>Trabalho numa abordagem humanista, de base fenomenológico-existencial: na prática, isso significa partir da sua experiência, sem fórmulas prontas nem rótulos apressados.</p>
+          <p>Antes da psicologia, passei cerca de quinze anos em marketing e publicidade. Essa trajetória me deixou um olhar atento à comunicação, aos dilemas de carreira e às pressões do mundo do trabalho — temas que chegam com força ao consultório.</p>
+          <p>É desse encontro entre escuta clínica e vivência profissional que nasce a minha forma de atender.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= COMO TRABALHO ================= -->
+    <section id="metodo" class="section">
+      <div class="container">
+        <h2 class="eyebrow eyebrow-heading" data-reveal>Como trabalho</h2>
+        <div class="pillars">
+          <article class="pillar" data-reveal>
+            <div class="pillar-rule"></div>
+            <p class="pillar-num">01</p>
+            <h3>Escuta sem pressa</h3>
+            <p>Compreender o que te trouxe até aqui antes de qualquer passo.</p>
+          </article>
+          <article class="pillar" data-reveal>
+            <div class="pillar-rule"></div>
+            <p class="pillar-num">02</p>
+            <h3>Método, não fórmula</h3>
+            <p>Abordagem humanista e fenomenológico-existencial: estruturada, mas sempre moldada a quem você é e ao momento que vive.</p>
+          </article>
+          <article class="pillar" data-reveal>
+            <div class="pillar-rule"></div>
+            <p class="pillar-num">03</p>
+            <h3>Continuidade</h3>
+            <p>Terapia é processo. Os resultados vêm da constância, não de atalhos.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PARA QUEM ================= -->
+    <section id="para-quem" class="section section-alt">
+      <div class="audience container">
+        <h2 class="eyebrow eyebrow-heading" data-reveal>Para quem</h2>
+        <p class="audience-intro" data-reveal>Pessoas chegam à terapia por muitos motivos. Acompanho com mais frequência três frentes:</p>
+
+        <div class="audience-item" data-reveal>
+          <span class="a-num">01</span>
+          <div>
+            <h3>Carreira, trabalho e burnout</h3>
+            <p>Pressão profissional, estresse, esgotamento e transições de carreira.</p>
+          </div>
+        </div>
+        <div class="audience-item" data-reveal>
+          <span class="a-num">02</span>
+          <div>
+            <h3>Ansiedade e momentos de transição</h3>
+            <p>Ansiedade, fases de mudança e decisões difíceis.</p>
+          </div>
+        </div>
+        <div class="audience-item audience-item-last" data-reveal>
+          <span class="a-num">03</span>
+          <div>
+            <h3>Relações e autoconhecimento</h3>
+            <p>Relacionamentos, autoestima e busca de sentido.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ATENDIMENTO ================= -->
+    <section id="atendimento" class="section">
+      <div class="container">
+        <h2 class="eyebrow eyebrow-heading" data-reveal>Atendimento</h2>
+        <div class="atend-grid">
+          <article class="card" data-reveal>
+            <h3>Presencial</h3>
+            <p>Rua André Ampère, 153 · região da Berrini / Brooklin, São Paulo.</p>
+            <p>Ambiente reservado e confortável.</p>
+          </article>
+          <article class="card" data-reveal>
+            <h3>Online</h3>
+            <p>Sessões por vídeo, com a mesma estrutura e sigilo, para quem prefere ou está distante.</p>
+          </article>
+        </div>
+        <p class="atend-note" data-reveal>Atendimento particular, exclusivamente com hora marcada — de segunda a sexta. Trabalho com um número limitado de pacientes, para garantir atenção e continuidade a cada processo.</p>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section id="faq" class="section section-alt">
+      <div class="faq container">
+        <h2 class="eyebrow eyebrow-heading" data-reveal>Perguntas frequentes</h2>
+
+        <details class="faq-item" data-reveal>
+          <summary><span class="faq-q">Como funciona o primeiro contato?</span></summary>
+          <p class="faq-a">Uma conversa breve por WhatsApp para entender sua demanda e agendar a primeira sessão.</p>
+        </details>
+        <details class="faq-item" data-reveal>
+          <summary><span class="faq-q">Quanto dura cada sessão?</span></summary>
+          <p class="faq-a">Em média 50 minutos, geralmente em frequência semanal.</p>
+        </details>
+        <details class="faq-item" data-reveal>
+          <summary><span class="faq-q">Como funciona o investimento?</span></summary>
+          <p class="faq-a">Atendimento particular, com emissão de recibo para reembolso quando aplicável.</p>
+        </details>
+        <details class="faq-item faq-item-last" data-reveal>
+          <summary><span class="faq-q">Meu sigilo é garantido?</span></summary>
+          <p class="faq-a">Sim. Tudo o que é trabalhado em terapia é protegido por sigilo profissional, conforme o Código de Ética do Psicólogo.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ================= CONTATO ================= -->
+    <section id="contato" class="section">
+      <div class="container">
+        <div class="contact-head" data-reveal>
+          <p class="eyebrow">Contato</p>
+          <h2 class="contact-title">Se fizer sentido para você, podemos marcar uma primeira conversa.</h2>
+          <a href={WHATSAPP} target="_blank" rel="noopener" class="btn-primary btn-primary-lg">Conversar pelo WhatsApp</a>
+          <p class="email-line">Se preferir um primeiro contato por e-mail, escreva para <a href="mailto:atendimento@fspsicologiaclinica.com.br">atendimento@fspsicologiaclinica.com.br</a></p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info" data-reveal>
+            <h3>Onde fica</h3>
+            <p>Rua André Ampère, 153<br>Região da Berrini / Brooklin · São Paulo</p>
+            <h3>Horários</h3>
+            <p>Segunda a sexta · somente com hora marcada</p>
+            <a class="maps-link" href="https://www.google.com/maps/place/FS+Psicologia+Clinica+e+Sa%C3%BAde+Mental/@-23.6100665,-46.6963654,17z/data=!3m1!4b1!4m6!3m5!1s0x94ce51016e963ec5:0x18e1f39b409b1736!8m2!3d-23.6100714!4d-46.6937905!16s%2Fg%2F11zjlgd08_" target="_blank" rel="noopener">Ver no Google Maps →</a>
+          </div>
+          <div class="map-embed" data-reveal>
+            <iframe title="Mapa — Rua André Ampère, 153, São Paulo" src="https://www.google.com/maps?q=Rua+Andr%C3%A9+Amp%C3%A8re,+153,+S%C3%A3o+Paulo&z=16&output=embed" width="600" height="320" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

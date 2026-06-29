@@ -1,0 +1,48 @@
+---
+// Shared site header, identical visual system on landing and blog.
+// On the landing (home=true) it renders the ORIGINAL nav byte-for-byte
+// (in-page anchors, "Perguntas" link, no Blog link) so the page stays
+// pixel-perfect. On blog pages the anchors point back to the landing and
+// a "Blog" link replaces the cross-page FAQ anchor.
+import { WHATSAPP } from '../consts';
+interface Props { home?: boolean }
+const { home = false } = Astro.props;
+const p = home ? '' : '/'; // anchor prefix: same-page on landing, /#… on blog
+---
+<header class="site-header">
+  <div class="nav-inner">
+    <a href={home ? '#inicio' : '/'} class="brand" aria-label="FS Psicologia Clínica — início">
+      <picture>
+        <source type="image/webp" srcset="/assets/img/logo.webp">
+        <img src="/assets/img/logo.png" alt="" width="40" height="40" class="brand-mark">
+      </picture>
+      <span class="brand-name">FS Psicologia Clínica</span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Navegação principal">
+      <a href={p + '#sobre'} class="nav-link">Sobre</a>
+      <a href={p + '#metodo'} class="nav-link">Como trabalho</a>
+      <a href={p + '#para-quem'} class="nav-link">Para quem</a>
+      <a href={p + '#atendimento'} class="nav-link">Atendimento</a>
+      {home
+        ? <a href="#faq" class="nav-link">Perguntas</a>
+        : <a href="/blog" class="nav-link">Blog</a>}
+      <a href={WHATSAPP} target="_blank" rel="noopener" class="nav-cta">WhatsApp</a>
+    </nav>
+
+    <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="nav-mobile" id="mobile-menu" hidden>
+    <a href={p + '#sobre'}>Sobre</a>
+    <a href={p + '#metodo'}>Como trabalho</a>
+    <a href={p + '#para-quem'}>Para quem</a>
+    <a href={p + '#atendimento'}>Atendimento</a>
+    {home
+      ? <a href="#faq">Perguntas frequentes</a>
+      : <a href="/blog">Blog</a>}
+    <a href={WHATSAPP} target="_blank" rel="noopener" class="nav-cta-mobile">Conversar pelo WhatsApp</a>
+  </div>
+</header>

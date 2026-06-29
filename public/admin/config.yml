@@ -1,0 +1,111 @@
+# ============================================================
+# Sveltia CMS — configuração do painel de edição do blog.
+#
+# Repositório no GitHub onde o conteúdo fica guardado.
+# ============================================================
+
+backend:
+  name: github
+  repo: FsPsico/fs-psicologia
+  branch: main
+  # Sem 'base_url': o login usa o "Sign In with Token" do GitHub
+  # (token de acesso pessoal de escopo fino). Não precisa de servidor.
+
+# Onde as imagens enviadas pelo painel são guardadas (dentro do repositório)…
+media_folder: "public/assets/uploads"
+# …e como elas aparecem no site (URL pública).
+public_folder: "/assets/uploads"
+
+# Idioma do painel.
+locale: pt
+
+# Mensagem de commit amigável quando você salva/publica pelo painel.
+backend_commit_messages:
+  create: "Novo post: {{slug}}"
+  update: "Atualiza post: {{slug}}"
+  delete: "Remove post: {{slug}}"
+  uploadMedia: "Adiciona imagem: {{path}}"
+  deleteMedia: "Remove imagem: {{path}}"
+
+collections:
+  - name: "blog"
+    label: "Posts do blog"
+    label_singular: "Post"
+    description: "Textos publicados em /blog."
+    folder: "src/content/blog"
+    create: true
+    # Nome do arquivo = endereço do post (ex.: meu-texto → /blog/meu-texto).
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    # Mostra rascunhos e publicados; o campo "Rascunho" controla a publicação.
+    sortable_fields: ["pubDate", "title"]
+    fields:
+      - { name: "title", label: "Título", widget: "string" }
+      - {
+          name: "description",
+          label: "Resumo (aparece no Google e no card)",
+          widget: "text",
+          hint: "1 a 2 frases. É a meta description do post."
+        }
+      - {
+          name: "pubDate",
+          label: "Data de publicação",
+          widget: "datetime",
+          date_format: "YYYY-MM-DD",
+          time_format: false,
+          format: "YYYY-MM-DD"
+        }
+      - {
+          name: "updatedDate",
+          label: "Data de atualização (opcional)",
+          widget: "datetime",
+          date_format: "YYYY-MM-DD",
+          time_format: false,
+          format: "YYYY-MM-DD",
+          required: false
+        }
+      - {
+          name: "category",
+          label: "Categoria",
+          widget: "select",
+          options:
+            [
+              { label: "Carreira e trabalho", value: "carreira-e-trabalho" },
+              { label: "Ansiedade e transições", value: "ansiedade-e-transicoes" },
+              { label: "Relações e autoconhecimento", value: "relacoes-e-autoconhecimento" }
+            ]
+        }
+      - {
+          name: "tags",
+          label: "Tags (palavras-chave)",
+          widget: "list",
+          required: false,
+          hint: "Aperte Enter após cada tag."
+        }
+      - {
+          name: "cover",
+          label: "Imagem de capa",
+          widget: "image",
+          required: false,
+          choose_url: false,
+          hint: "Aparece no topo do post e no compartilhamento."
+        }
+      - {
+          name: "coverAlt",
+          label: "Descrição da imagem (acessibilidade)",
+          widget: "string",
+          required: false,
+          default: ""
+        }
+      - {
+          name: "draft",
+          label: "Rascunho? (não publica no site enquanto marcado)",
+          widget: "boolean",
+          default: true
+        }
+      - {
+          name: "body",
+          label: "Texto do post",
+          widget: "markdown"
+        }

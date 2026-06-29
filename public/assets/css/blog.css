@@ -1,0 +1,148 @@
+/* ============================================================
+   FS Psicologia Clínica — blog styles
+   Reuses the design tokens from styles.css (--off, --petrol,
+   --deep, --gold, --serif, --sans …). Brand-consistent.
+   ============================================================ */
+
+/* Push content below the fixed header (the landing's hero handled this
+   with its own top padding; blog pages need an explicit offset). */
+.blog-main { padding-top: var(--nav-h); }
+
+/* ---- Page header band ---- */
+.blog-hero { padding: clamp(56px, 9vh, 96px) var(--gutter) clamp(32px, 5vh, 48px); }
+.blog-hero .container { max-width: 880px; }
+.blog-title {
+  font-family: var(--serif); font-weight: 500; color: var(--deep);
+  font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1.14; letter-spacing: -.01em;
+  margin: 0 0 18px; text-wrap: balance;
+}
+.blog-intro { font-size: clamp(1.05rem, 1.6vw, 1.2rem); line-height: 1.7; color: var(--body); margin: 0; max-width: 52ch; }
+
+/* ---- Category nav (clusters) ---- */
+.cluster-nav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+.cluster-chip {
+  font-family: var(--sans); font-size: .82rem; font-weight: 500; letter-spacing: .02em;
+  color: var(--petrol); text-decoration: none; padding: 8px 16px; border-radius: 999px;
+  border: 1px solid rgba(14,68,86,.22); transition: border-color .2s ease, background .2s ease;
+}
+.cluster-chip:hover { border-color: var(--gold); }
+.cluster-chip[aria-current="page"] { background: var(--petrol); color: var(--off); border-color: var(--petrol); }
+
+/* ---- Post list ---- */
+.post-list { padding: clamp(24px, 5vh, 56px) var(--gutter) clamp(72px, 12vh, 120px); }
+.post-list .container { max-width: 1100px; }
+.post-grid {
+  display: grid; gap: clamp(28px, 4vw, 44px);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+/* ---- Post card ---- */
+.post-card { display: flex; flex-direction: column; }
+.post-card a.card-cover {
+  display: block; aspect-ratio: 16 / 10; border-radius: 10px; overflow: hidden;
+  border: 1px solid rgba(14,68,86,.12); background: var(--img-bg); margin-bottom: 20px;
+}
+.post-card .card-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.post-card a.card-cover:hover img { transform: scale(1.03); }
+.card-cat {
+  font-family: var(--sans); font-size: .74rem; font-weight: 600; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--petrol); text-decoration: none;
+}
+.card-cat:hover { color: var(--gold); }
+.post-card h2 { font-size: 1.32rem; line-height: 1.28; margin: 10px 0 10px; letter-spacing: -.005em; }
+.post-card h2 a { text-decoration: none; color: var(--deep); transition: color .2s ease; }
+.post-card h2 a:hover { color: var(--petrol); }
+.post-card .card-excerpt { font-size: .98rem; line-height: 1.65; color: var(--body); margin: 0 0 14px; }
+.card-meta { font-size: .82rem; color: var(--muted); margin: 0; }
+.card-meta time { white-space: nowrap; }
+
+.empty-note { font-size: 1.02rem; color: var(--muted); }
+
+/* ============================================================
+   SINGLE POST
+   ============================================================ */
+.post { padding: clamp(40px, 7vh, 72px) var(--gutter) clamp(64px, 10vh, 100px); }
+.post-wrap { max-width: 720px; margin: 0 auto; }
+
+.post-header { margin-bottom: clamp(28px, 4vh, 40px); }
+.post-cat-link {
+  font-family: var(--sans); font-size: .78rem; font-weight: 600; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--petrol); text-decoration: none;
+}
+.post-cat-link:hover { color: var(--gold); }
+.post h1 {
+  font-family: var(--serif); font-weight: 500; color: var(--deep);
+  font-size: clamp(1.9rem, 4vw, 2.7rem); line-height: 1.16; letter-spacing: -.01em;
+  margin: 14px 0 18px; text-wrap: balance;
+}
+.post-desc { font-size: clamp(1.05rem, 1.6vw, 1.2rem); line-height: 1.6; color: var(--body); margin: 0 0 24px; }
+
+/* byline (E-E-A-T) */
+.byline { display: flex; align-items: center; gap: 14px; padding: 18px 0; border-top: 1px solid rgba(14,68,86,.14); border-bottom: 1px solid rgba(14,68,86,.14); }
+.byline-mark { width: 44px; height: 44px; border-radius: 999px; object-fit: contain; background: var(--img-bg); border: 1px solid rgba(14,68,86,.12); flex-shrink: 0; }
+.byline-text { font-size: .9rem; line-height: 1.5; color: var(--muted); }
+.byline-text strong { color: var(--deep); font-weight: 600; }
+.byline-text .crp { color: var(--petrol); }
+.byline-dot { margin: 0 6px; color: var(--gold); }
+
+/* cover */
+.post-cover { margin: clamp(28px, 4vh, 40px) 0; border-radius: 10px; overflow: hidden; border: 1px solid rgba(14,68,86,.12); background: var(--img-bg); }
+.post-cover img { width: 100%; height: auto; display: block; }
+
+/* prose */
+.prose { font-size: 1.08rem; line-height: 1.78; color: var(--body); }
+.prose > * + * { margin-top: 1.3em; }
+.prose h2 { font-family: var(--serif); font-weight: 500; color: var(--deep); font-size: 1.6rem; line-height: 1.3; letter-spacing: -.005em; margin-top: 1.8em; }
+.prose h3 { font-family: var(--serif); font-weight: 500; color: var(--deep); font-size: 1.3rem; line-height: 1.35; margin-top: 1.6em; }
+.prose p { margin: 0; }
+.prose a { color: var(--petrol); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(194,160,99,.6); }
+.prose strong { color: var(--deep); font-weight: 600; }
+.prose ul, .prose ol { padding-left: 1.4em; }
+.prose li + li { margin-top: .5em; }
+.prose blockquote {
+  border-left: 2px solid var(--gold); padding: 4px 0 4px 22px; margin: 1.6em 0;
+  font-family: var(--serif); font-style: italic; font-size: 1.22rem; line-height: 1.5; color: var(--deep);
+}
+.prose img { border-radius: 10px; border: 1px solid rgba(14,68,86,.12); }
+.prose hr { border: 0; border-top: 1px solid rgba(14,68,86,.14); margin: 2.2em 0; }
+.prose code { font-size: .92em; background: var(--off-2); padding: .12em .4em; border-radius: 4px; }
+
+.updated-note { font-size: .85rem; color: var(--muted); margin-top: 2.2em; font-style: italic; }
+
+/* ---- Author box (E-E-A-T) ---- */
+.author-box {
+  margin-top: clamp(40px, 6vh, 64px); padding: clamp(26px, 4vw, 36px);
+  background: var(--card); border: 1px solid rgba(14,68,86,.14); border-radius: 12px;
+  display: flex; gap: 20px; align-items: flex-start;
+}
+.author-box img { width: 64px; height: 64px; border-radius: 999px; object-fit: contain; background: var(--img-bg); border: 1px solid rgba(14,68,86,.12); flex-shrink: 0; }
+.author-box .ab-eyebrow { font-family: var(--sans); font-size: .74rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--petrol); margin: 0 0 8px; }
+.author-box h2 { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; color: var(--deep); margin: 0 0 4px; }
+.author-box .ab-crp { font-size: .85rem; color: var(--petrol); margin: 0 0 12px; }
+.author-box p { font-size: .98rem; line-height: 1.65; color: var(--body); margin: 0; }
+
+/* ---- Ethical CTA ---- */
+.post-cta {
+  margin-top: clamp(28px, 4vh, 40px); padding: clamp(28px, 4vw, 40px);
+  background: var(--deep); border-radius: 12px; color: var(--off);
+}
+.post-cta .pq-rule { margin-bottom: 22px; }
+.post-cta p { font-family: var(--serif); font-weight: 400; font-size: clamp(1.15rem, 2vw, 1.5rem); line-height: 1.4; color: var(--off); margin: 0 0 26px; max-width: 36ch; }
+.post-cta .btn-primary { background: var(--gold); color: var(--deep); }
+.post-cta .btn-primary:hover { background: #d4b577; }
+
+/* ---- Related posts ---- */
+.related { margin-top: clamp(48px, 7vh, 72px); }
+.related h2 { font-family: var(--serif); font-weight: 500; font-size: 1.5rem; color: var(--deep); margin: 0 0 24px; }
+.related-list { display: grid; gap: 22px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+.related-item { text-decoration: none; }
+.related-item .ri-cat { font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--petrol); }
+.related-item h3 { font-family: var(--serif); font-weight: 500; font-size: 1.1rem; line-height: 1.3; color: var(--deep); margin: 6px 0 0; transition: color .2s ease; }
+.related-item:hover h3 { color: var(--petrol); }
+
+/* ---- Back link ---- */
+.post-back { display: inline-block; margin-top: clamp(40px, 6vh, 56px); font-size: .92rem; color: var(--petrol); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(194,160,99,.6); }
+
+@media (max-width: 560px) {
+  .author-box { flex-direction: column; gap: 14px; }
+}
