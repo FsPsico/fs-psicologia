@@ -26,7 +26,7 @@ export const AUTHOR = {
   name: 'Felipe Zecchin Salim',
   jobTitle: 'Psicólogo clínico',
   crp: 'CRP 06/216021',
-  bio: 'Psicólogo clínico (CRP 06/216021). Atende adultos, presencialmente na Berrini (São Paulo) e online, numa abordagem humanista de base fenomenológico-existencial.',
+  bio: 'Psicólogo clínico (CRP 06/216021) e fundador da FS Psicologia Clínica e Saúde Mental, em São Paulo. Sua trajetória reúne duas formações — Psicologia, pela Universidade Paulista, e Comunicação Social, pela Anhembi Morumbi — e mais de quinze anos de atuação em marketing e publicidade. É dessa vivência em ambientes de alta exigência que vem sua sensibilidade para quem vive sob pressão contínua: executivos, lideranças e profissionais que aprenderam a operar no limite e raramente encontram espaço para si. Atualmente, cursa pós-graduação em Gestão Clínica no Hospital Sírio-Libanês.',
 } as const;
 
 // The three thematic clusters (topic authority). Slugs must match the
