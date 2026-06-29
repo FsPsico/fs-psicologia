@@ -148,3 +148,10 @@
 @media (max-width: 560px) {
   .author-box { flex-direction: column; gap: 14px; }
 }
+/* ---- Share ---- */
+.share { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin-top: clamp(32px, 5vh, 48px); padding-top: 24px; border-top: 1px solid rgba(14,68,86,.14); }
+.share-label { font-family: var(--sans); font-size: .78rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--petrol); }
+.share-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.share-btn { font-family: var(--sans); font-size: .85rem; font-weight: 500; color: var(--petrol); background: none; cursor: pointer; text-decoration: none; padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(14,68,86,.22); transition: border-color .2s ease; }
+.share-btn:hover { border-color: var(--gold); }
+.share-btn[hidden] { display: none; }
