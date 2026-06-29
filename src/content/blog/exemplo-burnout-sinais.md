@@ -8,7 +8,7 @@ tags:
   - burnout
   - trabalho
   - esgotamento
-cover: /assets/img/consultorio-hero-1040.jpg
+cover: /assets/uploads/pexels-inkverse-store-2158691322-35542602.jpg
 coverAlt: Poltrona do consultório com luz natural, região da Berrini, São Paulo
 draft: false
 ---
