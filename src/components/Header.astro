@@ -1,13 +1,12 @@
 ---
-// Shared site header, identical visual system on landing and blog.
-// On the landing (home=true) it renders the ORIGINAL nav byte-for-byte
-// (in-page anchors, "Perguntas" link, no Blog link) so the page stays
-// pixel-perfect. On blog pages the anchors point back to the landing and
-// a "Blog" link replaces the cross-page FAQ anchor.
+// Shared site header — same nav on every page (landing and blog), so the
+// header is consistent and the blog is reachable from the home.
+// `p` makes the in-page anchors work from both contexts: same-page on the
+// landing, and /#… (back to the landing) on blog pages.
 import { WHATSAPP } from '../consts';
 interface Props { home?: boolean }
 const { home = false } = Astro.props;
-const p = home ? '' : '/'; // anchor prefix: same-page on landing, /#… on blog
+const p = home ? '' : '/';
 ---
 <header class="site-header">
   <div class="nav-inner">
@@ -24,9 +23,8 @@ const p = home ? '' : '/'; // anchor prefix: same-page on landing, /#… on blog
       <a href={p + '#metodo'} class="nav-link">Como trabalho</a>
       <a href={p + '#para-quem'} class="nav-link">Para quem</a>
       <a href={p + '#atendimento'} class="nav-link">Atendimento</a>
-      {home
-        ? <a href="#faq" class="nav-link">Perguntas</a>
-        : <a href="/blog" class="nav-link">Blog</a>}
+      <a href={p + '#faq'} class="nav-link">Perguntas</a>
+      <a href="/blog" class="nav-link">Blog</a>
       <a href={WHATSAPP} target="_blank" rel="noopener" class="nav-cta">WhatsApp</a>
     </nav>
 
@@ -40,9 +38,8 @@ const p = home ? '' : '/'; // anchor prefix: same-page on landing, /#… on blog
     <a href={p + '#metodo'}>Como trabalho</a>
     <a href={p + '#para-quem'}>Para quem</a>
     <a href={p + '#atendimento'}>Atendimento</a>
-    {home
-      ? <a href="#faq">Perguntas frequentes</a>
-      : <a href="/blog">Blog</a>}
+    <a href={p + '#faq'}>Perguntas frequentes</a>
+    <a href="/blog">Blog</a>
     <a href={WHATSAPP} target="_blank" rel="noopener" class="nav-cta-mobile">Conversar pelo WhatsApp</a>
   </div>
 </header>
