@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { WHATSAPP, BUSINESS_JSONLD } from '../consts';
+import { WHATSAPP, BUSINESS_JSONLD, SITE } from '../consts';
 ---
 <BaseLayout
   home
@@ -186,7 +186,8 @@ import { WHATSAPP, BUSINESS_JSONLD } from '../consts';
           <p class="eyebrow">Contato</p>
           <h2 class="contact-title">Se fizer sentido para você, podemos marcar uma primeira conversa.</h2>
           <a href={WHATSAPP} target="_blank" rel="noopener" class="btn-primary btn-primary-lg">Conversar pelo WhatsApp</a>
-          <p class="email-line">Se preferir um primeiro contato por e-mail, escreva para <a href="mailto:atendimento@fspsicologiaclinica.com.br">atendimento@fspsicologiaclinica.com.br</a></p>
+        <p class="email-line">Ligue ou envie mensagem: <a href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</a></p>
+<p class="email-line">Se preferir e-mail: <a href="mailto:atendimento@fspsicologiaclinica.com.br">atendimento@fspsicologiaclinica.com.br</a></p>
         </div>
 
         <div class="contact-grid">
@@ -194,7 +195,7 @@ import { WHATSAPP, BUSINESS_JSONLD } from '../consts';
             <h3>Onde fica</h3>
             <p>Rua André Ampère, 153<br>Região da Berrini / Brooklin · São Paulo</p>
             <h3>Horários</h3>
-            <p>Segunda a sexta · somente com hora marcada</p>
+            <p>Segunda a sexta · exclusivamente com hora marcada</p>
             <a class="maps-link" href="https://www.google.com/maps/place/FS+Psicologia+Clinica+e+Sa%C3%BAde+Mental/@-23.6100665,-46.6963654,17z/data=!3m1!4b1!4m6!3m5!1s0x94ce51016e963ec5:0x18e1f39b409b1736!8m2!3d-23.6100714!4d-46.6937905!16s%2Fg%2F11zjlgd08_" target="_blank" rel="noopener">Ver no Google Maps →</a>
           </div>
           <div class="map-embed" data-reveal>
