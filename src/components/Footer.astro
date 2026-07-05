@@ -1,6 +1,7 @@
 ---
 // Shared site footer — identical to the original landing footer.
 import { WHATSAPP, SITE } from '../consts';
+const { phone, phoneDisplay } = SITE;
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
@@ -17,6 +18,7 @@ const year = new Date().getFullYear();
         <p class="footer-meta">Felipe Zecchin Salim — CRP 06/216021<br>Rua André Ampère, 153 — São Paulo</p>
       </div>
       <nav class="footer-links" aria-label="Links de contato">
+        <a href={`tel:${phone}`}>Telefone · {phoneDisplay}</a>
         <a href={WHATSAPP} target="_blank" rel="noopener">WhatsApp</a>
         <a href={SITE.instagram} target="_blank" rel="noopener">Instagram · @fs.psicologiaclinica</a>
         <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
