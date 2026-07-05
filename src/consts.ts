@@ -15,6 +15,8 @@ export const SITE = {
   themeColor: '#F6F3ED',
   instagram: 'https://instagram.com/fs.psicologiaclinica',
   email: 'atendimento@fspsicologiaclinica.com.br',
+  phone: '+5511956772575',
+  phoneDisplay: '(11) 95677-2575',
 } as const;
 
 // Pre-encoded WhatsApp deep link reused across the whole site.
@@ -63,7 +65,7 @@ export const BUSINESS_JSONLD = {
   url: SITE.url + '/',
   image: SITE.url + '/assets/img/og-image.jpg',
   logo: SITE.url + '/assets/img/logo.png',
-  telephone: '+5511956772575',
+  telephone: SITE.phone,
   email: SITE.email,
   priceRange: '$$',
   currenciesAccepted: 'BRL',
