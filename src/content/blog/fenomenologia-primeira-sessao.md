@@ -9,7 +9,7 @@ tags:
   - primeira sessão
   - abordagem
   - autoconhecimento
-cover: /assets/uploads/abordagem-fenomenologica-psicologo-brooklin-sao-paulo.jpg
+cover: /assets/uploads/abordagem-fenomenologica-psicologo-brooklin-sao-paulo.webp
 coverAlt: Poltrona confortável em sala de atendimento psicológico com luz natural.
 draft: false
 ---
