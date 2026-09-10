@@ -31,6 +31,13 @@ const {
 
 const canonical = new URL(path, SITE.url).href;
 const ogImage = new URL(image, SITE.url).href;
+
+// Google Ads (gtag.js). A conversão é o clique num botão de WhatsApp que
+// leva ao NOSSO número — o botão "compartilhar no WhatsApp" do blog usa
+// wa.me/?text=… (sem número) e por isso não conta como conversão.
+const GADS_ID = 'AW-18443297173';
+const GADS_CONVERSION = `${GADS_ID}/7_9pCIa0s_McEJXDudpE`;
+const GADS_WHATSAPP_DIGITS = SITE.phone.replace(/\D/g, '');
 ---
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -88,4 +95,25 @@ const ogImage = new URL(image, SITE.url).href;
      becomes visible after 2s even if main.js fails to load. */
   document.documentElement.classList.add('js');
   setTimeout(function () { document.documentElement.classList.add('reveal-fallback'); }, 2000);
+</script>
+
+<!-- Google tag (gtag.js) — Google Ads -->
+<script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GADS_ID}`}></script>
+<script is:inline define:vars={{ gadsId: GADS_ID, sendTo: GADS_CONVERSION, phone: GADS_WHATSAPP_DIGITS }}>
+  /* define:vars envolve este script numa função, então o gtag precisa ser
+     publicado no window para o resto da página (e o Tag Assistant) achá-lo. */
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+  gtag('js', new Date());
+  gtag('config', gadsId);
+
+  /* Conversão "contato por WhatsApp": só links que apontam para o nosso
+     número, para não contar os botões de compartilhar artigo. */
+  document.addEventListener('click', function (e) {
+    var target = e.target;
+    if (!target || !target.closest) return;
+    var link = target.closest('a[href*="wa.me"], a[href*="whatsapp.com"]');
+    if (!link || link.href.indexOf(phone) === -1) return;
+    gtag('event', 'conversion', { send_to: sendTo });
+  });
 </script>
