@@ -1,0 +1,12 @@
+# Dependências (a Netlify instala sozinha a partir do package-lock.json)
+node_modules/
+
+# Saída do build e cache do Astro
+dist/
+.astro/
+
+# Ferramentas locais e lixo do macOS
+.claude/
+.DS_Store
+.env
+.env.*
